@@ -60,6 +60,13 @@ if (! function_exists('env')) {
         if (($valueLength = strlen($value)) > 1 && $value[0] === '"' && $value[$valueLength - 1] === '"') {
             return substr($value, 1, -1);
         }
+
+        if( is_numeric($value) ) {
+            $value = (int) $value;
+        }else if( is_float($value) ) {
+            $value = (float) $value;
+        }
+
         return $value;
     }
 }
